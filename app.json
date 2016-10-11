@@ -1,0 +1,82 @@
+{
+  "name": "tractor-pulls",
+  "description": "A node app built to pull the open PRs for a given team (GitHub org)",
+  "repository": "https://github.com/n8io/tractor-pulls",
+  "logo": "https://i.imgsafe.org/525ec6e047.png",
+  "keywords": [
+    "pull request",
+    "github enterprise"
+  ],
+  "addons": [
+    "scheduler"
+  ],
+  "formation": {
+    "web": {
+      "quantity": 0,
+      "time_to_live": 0,
+      "type": "free"
+    }
+  },
+  "env": {
+    "GITHUB_API_BASE_URL": {
+      "description": "The Github api base url. E.g. https://github.com/api/v3",
+      "value": "",
+      "required": true
+    },
+    "GITHUB_ORG": {
+      "description": "The org name of your team. E.g., TeamFalcon, TeamHamburgler, Team-Weyland, etc",
+      "value": "",
+      "required": true
+    },
+    "GITHUB_TOKEN": {
+      "description": "Your personal access token for Github. https://github.com/settings/tokens",
+      "value": "",
+      "required": true
+    },
+    "ONLY_WEEKDAYS": {
+      "description": "Allows you to restrict pull request summaries to only post on weekdays. Must be a truthy value to enable. Defaults to false (everyday).",
+      "value": "1",
+      "required": true
+    },
+    "SLACK_WEBHOOK_URL": {
+      "description": "Your incoming webhook defined by your slack administrator. https://<your company>.slack.com/apps/manage/custom-integrations",
+      "value": "",
+      "required": true
+    },
+    "UPSTREAM_OWNERS": {
+      "description": "The comma separated list of repo owners that you want to query for your team members' pull requests. E.g. lib,apps,ui,qa",
+      "value": "",
+      "required": true
+    },
+    "EXCLUDE_USER_MENTIONS": {
+      "description": "Allows you to omit user mentions (e.g., @john.doe) in the pull request summary. Must be truthy value to exclude. Defaults to false",
+      "value": "",
+      "required": false
+    },
+    "SLACK_BOT_ICON_URL": {
+      "description": "Allows you to specify a custom bot icon url. Defaults to the tractor icon you see above",
+      "value": "",
+      "required": false
+    },
+    "SLACK_BOT_NAME": {
+      "description": "Allows you to override the bot's username on the summary. Defaults to `Tractor Pull`",
+      "value": "",
+      "required": false
+    },
+    "SLACK_CHANNEL": {
+      "description": "Allows you to override where the pull request summary is posted. Must be in the format of `#channel` or `@user`. Defaults to the channel/user of your webhook configuration",
+      "value": "",
+      "required": false
+    },
+    "SLACK_EXCLUDE_SHARE_SUMMARY": {
+      "description": "Allows you to exclude the copy/paste section of the summary. Must be a truthy value to exclude. Defaults to false",
+      "value": "",
+      "required": false
+    },
+    "SLACK_CHANNEL_STALE": {
+      "description": "Allows you to send summaries by key to additional channels based upon their stale time in minutes. Valid keys are [maintain, platform, css, qa]. Must be in the following format: <key1>:<channel>:<minutesStale>,<key2>:<channel>:<minutesStale> Defaults to false",
+      "value": "",
+      "required": false
+    }
+  }
+}
