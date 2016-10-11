@@ -636,29 +636,14 @@ function obfuscateUsers(str) {
     return map;
   }, {});
 
-  const wrappers = [
-    {
-      start: '~',
-      end: '~'
-    },
-    {
-      start: '_',
-      end: '_'
-    },
-    {
-      start: '@',
-      end: ' '
-    }
-  ];
-
   Object
     .keys(dummyUserMap)
     .forEach(key => {
-      wrappers.forEach(w => {
-        const reg = new RegExp(`${key}`, 'g');
+      const reg = new RegExp(`${key}`, 'g');
 
+      if (key !== 'none') {
         str = str.replace(reg, dummyUserMap[key]);
-      });
+      }
     })
     ;
 
